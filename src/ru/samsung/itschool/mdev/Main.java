@@ -56,23 +56,36 @@ public class Main {
         }
         //mondayPets.subMap("A","H").clear();
 
-        TreeMap<String, TreeMap<String,Integer>>
-                shop = new TreeMap<>();
+        TreeMap<String, TreeMap<String,Integer>> shop = new TreeMap<>();
+
         Scanner scanner = new Scanner(System.in);
-        for() {
+        while(scanner.hasNextLine()) {
             String[] word = scanner.nextLine().split(" ");
             // 0 - Ivanov
             // 1 - paper
             // 2 - 10
+            if(shop.containsKey(word[0])) {
+                TreeMap<String,Integer> user = shop.get(word[0]);
+                if(user.containsKey(word[1])) {
+                    user.put(word[1],Integer.parseInt(word[2])+user.get(word[1]));
+                } else {
+                    user.put(word[1],Integer.parseInt(word[2]));
+                }
+            } else {
+                TreeMap<String,Integer> good = new TreeMap<>();
+                good.put(word[1],Integer.parseInt(word[2]));
+                shop.put(word[0],good);
+            }
         }
 
-        if (shop.containsKey()) {
-
-
-        } else {
-            treeMap
-            shop.put
+        for(Map.Entry e: shop.entrySet()) {
+            System.out.println(e.getKey() + ": ");
+            TreeMap<String,Integer> user = (TreeMap) e.getValue();
+            for(Map.Entry e1: user.entrySet()) {
+                System.out.println(e1.getKey() + " " + e1.getValue());
+            }
         }
+
 
 
     }
